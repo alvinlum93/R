@@ -1,0 +1,147 @@
+---
+title: "Exercises"
+author: ''
+date: ''
+output:
+  pdf_document: default
+  html_document: default
+subtitle: Week 1
+---
+
+## Exercise 1: Matrices
+
+
+1. Create a matrix. The matrix should have 10 elements and 2 columns. All the elements of your matrix should be integers. Do not forget to give a name to your matrix.
+
+```{r}
+# Put your code in here
+a <- matrix(1:10, byrow=TRUE, ncol=2)
+```
+
+2. Create another matrix. The matrix should have 10 elements and 5 columns. All the elements of your matrix should be integers. Do not forget to give a name to your matrix.
+
+```{r}
+# Put your code in here
+b <- matrix(1:10, byrow=TRUE, ncol=5)
+```
+
+3. Multiply the two matrix together. Remember to use the right operator for matrix multiplication. Display the result.
+
+```{r}
+# Put your code in here
+c <- a%*%b
+```
+
+What happens if you use the standard multiplication operator?
+
+4. Now create two square matrices and multiply them using the matrix multiplication operator and the normal operator. What do you notice?
+
+```{r}
+# Put your code in here
+d <- matrix(1:4,byrow=TRUE, ncol=2)
+e <- matrix(5:8, byrow=TRUE, ncol=2)
+f <- d*e
+g <- d%*%e
+#standard multiplication is just a scalar multiplication while matrix multiplication operator is the proper one
+```
+
+
+## Exercise 2: Systems of equations
+
+
+1. Solve the following system
+
+$$
+\begin{cases} 5x - 2y + 3z - \alpha = 2  \\ 
+x + 4y - z + \alpha = 19\\ 
+4x + \frac{1}{2}y + 12z - 6 \alpha = -11\\
+2x - y + z - 3 \alpha = -12
+\end{cases}
+$$
+
+```{r}
+# Put your code in here
+q <- matrix(data=c(5,-2,3,-1,1,4,-1,1,4,0.5,12,-6,2,-1,1,-3), nrow=4, byrow=TRUE)
+r <- c(2,19,-11,-12)
+solve(q,r)
+```
+
+## Exercise 3: derivatives
+
+1. What are the derivatives of the following functions:
+  + $f(x) = cos(x)$
+  + $f(x) = x + y^2$ for $x$ and for $y$
+  + $f(x) = 5x + x^2 - e^x$
+
+```{r}
+# Put your code in here
+D(expression(cos(x)),'x')
+D(expression(x+y^2),'x')
+D(expression(x+y^2),'y')
+D(expression(5*x+x^2-e^x),'x')
+
+```
+
+2. Gradient. Use the `deriv` function to build the gradient of the following functions:
+  + $f(x) = cos(x) - sin(x)$
+  + $f(x) = 5x + x^2 + 5$
+  + $f(x) = x^2 - ln(x) - 3x$
+
+```{r}
+# Put your code in here
+deriv(expression(cos(x)-sin(x)),'x', function.arg = TRUE)
+deriv(expression(5*x+x^2+5),'x')
+deriv(expression(x^2-log(x)-3*x),'x')
+
+```
+
+
+## Exercise 4: Probability
+
+1. If there is 30 balls in an urn what is the probability of drawing any ball?
+2. If 10 of those ball are red, what is the probability of drawing a red ball?
+3. If the red balls are numbered 1 to 10 and the other balls (let's assume they are black) are numbered 1 to 10 with 2 black balls of each type:
+  + what is the probability of the ball drawn being red if it is a 2?
+  + What is the probability that the ball is marked with the number 7 if it is black?
+
+4. If you throw a fair coin 10 times, what is the probability of getting exactly 4 heads? At least 4 heads?
+
+5. If you roll a fair 6-sided dice 10 times, what is the probability of getting exactly 3 sixes? What is the probability of getting at least 3 sixes? 
+
+
+## Exercise 5: Some games with dice
+
+Get together with one of your classmates. Look at the dice you got. Now you need to come up with a game using them.
+
+1. First, simulate each of the dice you have. Write a function that when called is going to select 1 of the faces of the dice.
+
+```{r}
+# Put your code in here
+1/30
+1/3
+1/3
+1/10
+
+# In order to simulate a dice you could use the already available
+# function called sample()
+
+```
+
+
+2. Now in discussion with one of your classmates, design a simple game were two players successively throw dice. Aim to make it fast, fun and allow for some strategic thinking. Once you have played this game a few times, calculate each players probability of winning. Do the final probabilities seem aligned with your perception when you played the game?
+
+
+## Exercise 6: Just check that this .Rmd document renders both to pdf and html.
+
+## Exercise 7: The one with the pull request
+
+Fork the [github repository](https://github.com/antoinevernet/BA1820) for the class.
+
+Improve an existing slide in session 1 or session 2, or design a new slide that expand the current slide deck.
+
+Edit the readme to add your name in the contributors section with your cohort name (Business Analytics 1718)
+
+Write a pull request.
+
+If your pull request is accepted (I might require some changes first), you name is now forever in the contributors list.
+
